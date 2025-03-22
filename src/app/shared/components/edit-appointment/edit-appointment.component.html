@@ -41,5 +41,6 @@
       </div>
     </div>
     <button mat-flat-button type="submit">Save</button>
+    <button *ngIf="appointmentId()" mat-button (click)="deleteAppointment()">Delete</button>
   </div>
 </form>

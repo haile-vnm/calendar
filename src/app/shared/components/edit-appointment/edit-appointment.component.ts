@@ -1,4 +1,4 @@
-import { Component, inject, input, OnInit, output, Signal } from '@angular/core';
+import { Component, computed, inject, input, OnInit, output } from '@angular/core';
 import {FormBuilder, FormGroup, ReactiveFormsModule, Validators} from '@angular/forms';
 import { Appointment } from '../../../models/appointment';
 import { MatInputModule } from '@angular/material/input';
@@ -9,6 +9,7 @@ import { MatTimepickerModule } from '@angular/material/timepicker';
 import { MatButtonModule } from '@angular/material/button';
 import { MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { AppointmentService } from '../../services/appointment.service';
+import { CommonModule } from '@angular/common';
 
 @Component({
   selector: 'app-edit-appointment',
@@ -19,7 +20,8 @@ import { AppointmentService } from '../../services/appointment.service';
     MatNativeDateModule,
     MatIconModule,
     MatButtonModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    CommonModule,
   ],
   providers: [provideNativeDateAdapter()],
   templateUrl: './edit-appointment.component.html',
@@ -33,6 +35,7 @@ export class EditAppointmentComponent implements OnInit {
   appointment = input<Partial<Appointment>>();
 
   complete = output();
+  appointmentId = computed(() => this.appointment()?.id || this.data.id)
 
   form!: FormGroup;
 
@@ -47,17 +50,18 @@ export class EditAppointmentComponent implements OnInit {
   }
 
   submitForm() {
-    const id = this.getAppointmentId();
+    const id = this.appointmentId();
     if (id) {
       this.appointmentService.update(id, this.getAppointmentChanges());
     } else {
       this.appointmentService.create(this.getAppointmentChanges());
     }
+
     this.complete.emit();
   }
 
-  private getAppointmentId() {
-    return this.data.id || this.appointment()?.id;
+  deleteAppointment() {
+    this.appointmentService.delete(this.appointmentId()!);
   }
 
   private getAppointmentChanges(): Omit<Appointment, 'id'> {
