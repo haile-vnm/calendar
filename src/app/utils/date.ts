@@ -20,3 +20,23 @@ export function getWeeksInMonth(date: Date): Date[][] {
 
   return weeks;
 }
+
+export const shiftTime = (amount: number, unit: 'hour' | 'min', date: Date = new Date()): Date => {
+  const newDate = new Date(date); // Create a new Date object to avoid mutating the original
+
+  if (unit === 'hour') {
+    newDate.setHours(newDate.getHours() + amount);
+  } else if (unit === 'min') {
+    newDate.setMinutes(newDate.getMinutes() + amount);
+  }
+
+  return newDate;
+};
+
+export const isEqualDate = (date: Date, compareDate: Date): boolean => {
+  return (
+    date.getFullYear() === compareDate.getFullYear() &&
+    date.getMonth() === compareDate.getMonth() &&
+    date.getDate() === compareDate.getDate()
+  );
+};

@@ -2,5 +2,7 @@
   <div class="header">
     <div>{{date().getDate()}}</div>
   </div>
-  <div class="appointments"></div>
+  <div class="appointments">
+    <div *ngFor="let appointment  of appointments()">{{appointment.title}}</div>
+  </div>
 </div>
