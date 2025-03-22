@@ -4,7 +4,6 @@ import { createDateFrom } from '../utils/date';
 
 export const greaterThan = (startDateField: string, startTimeField: string, endDateField: string, form$: Observable<FormGroup>) => {
   return (control: AbstractControl): Observable<ValidationErrors | null> => {
-    console.log(control.value);
     return combineLatest([
       control.valueChanges.pipe(filter(Boolean)),
       form$.pipe(

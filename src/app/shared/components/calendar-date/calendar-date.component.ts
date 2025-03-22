@@ -8,11 +8,14 @@ import { AppointmentService } from '../../services/appointment.service';
 import { toObservable } from '@angular/core/rxjs-interop';
 import { switchMap } from 'rxjs';
 import { CalendarAppointmentComponent } from '../calendar-appointment/calendar-appointment.component';
+import { CdkDrag } from '@angular/cdk/drag-drop';
+import { Appointment } from '../../../models/appointment';
 
 @Component({
   selector: 'app-calendar-date',
   imports: [
     CommonModule,
+    CdkDrag,
 
     CalendarAppointmentComponent,
   ],

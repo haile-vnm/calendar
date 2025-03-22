@@ -3,6 +3,8 @@
     <div>{{date().getDate()}}</div>
   </div>
   <div class="appointments">
-    <app-calendar-appointment *ngFor="let appointment  of appointments()" [appointment]="appointment"></app-calendar-appointment>
+    <div *ngFor="let appointment of appointments()">
+      <app-calendar-appointment [appointment]="appointment" cdkDragBoundary=".calendar" cdkDrag [cdkDragData]="appointment"></app-calendar-appointment>
+    </div>
   </div>
 </div>
