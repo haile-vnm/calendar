@@ -40,6 +40,8 @@
         </mat-form-field>
       </div>
     </div>
+    <div *ngIf="errorMessage()" matError>{{errorMessage()}}</div>
+
     <button mat-flat-button type="submit">Save</button>
     <button *ngIf="appointmentId()" mat-button (click)="deleteAppointment()">Delete</button>
   </div>
