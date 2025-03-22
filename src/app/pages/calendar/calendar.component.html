@@ -1,1 +1,19 @@
+<div class="tools">
+  <!-- Today Button -->
+  <button mat-stroked-button (click)="goToToday()">Today</button>
+
+  <!-- Previous Month Button -->
+  <button mat-icon-button (click)="previousMonth()">
+    <mat-icon>chevron_left</mat-icon>
+  </button>
+
+  <!-- Next Month Button -->
+  <button mat-icon-button (click)="nextMonth()">
+    <mat-icon>chevron_right</mat-icon>
+  </button>
+
+  <!-- Current Month & Year -->
+  <span class="month-label">{{ date() | date: 'MMMM yyyy' }}</span>
+</div>
+
 <app-calendar-month></app-calendar-month>

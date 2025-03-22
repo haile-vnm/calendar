@@ -14,6 +14,15 @@ export class CalendarService {
     return this.selectedDate$.asObservable();
   }
 
+  incrementMonth(months = 1) {
+    const selectedDate = this.selectedDate$.value;
+    this.selectedDate$.next(new Date(selectedDate.getFullYear(), selectedDate.getMonth() + months, 1));
+  }
+
+  gotoToday() {
+    this.selectedDate$.next(new Date());
+  }
+
   getCurrentWeeks() {
     return this.selectedDate$.pipe(
       map(date => getWeeksInMonth(date))

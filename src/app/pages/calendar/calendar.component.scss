@@ -1,0 +1,16 @@
+:host {
+  .tools {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+
+    margin-bottom: 1rem;
+  }
+
+  .month-label {
+    font-size: 18px;
+    font-weight: 500;
+    min-width: 120px;
+    text-align: center;
+  }
+}
