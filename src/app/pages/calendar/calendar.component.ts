@@ -1,5 +1,5 @@
 import { Component, inject } from '@angular/core';
-import { CalendarMonthComponent } from '../../shared/calendar-month/calendar-month.component';
+import { CalendarMonthComponent } from '../../shared/components/calendar-month/calendar-month.component';
 import { MatButtonModule } from '@angular/material/button';
 import { MatIconModule } from '@angular/material/icon';
 import { toSignal } from '@angular/core/rxjs-interop';

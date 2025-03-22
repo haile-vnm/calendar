@@ -1,6 +1,6 @@
 import { Component, inject } from '@angular/core';
 import { toSignal } from '@angular/core/rxjs-interop';
-import { CalendarService } from '../services/calendar.service';
+import { CalendarService } from '../../services/calendar.service';
 import { CalendarDateComponent } from '../calendar-date/calendar-date.component';
 import { CommonModule } from '@angular/common';
 

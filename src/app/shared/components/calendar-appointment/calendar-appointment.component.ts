@@ -1,6 +1,6 @@
 import { Component, HostListener, inject, input } from '@angular/core';
-import { Appointment } from '../../models/appointment';
-import { EditAppointmentComponent } from '../components/edit-appointment/edit-appointment.component';
+import { Appointment } from '../../../models/appointment';
+import { EditAppointmentComponent } from '../edit-appointment/edit-appointment.component';
 import { MatDialog } from '@angular/material/dialog';
 
 @Component({

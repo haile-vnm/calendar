@@ -1,10 +1,10 @@
 import { CommonModule } from '@angular/common';
 import { Component, HostListener, inject, input } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
-import { EditAppointmentComponent } from '../components/edit-appointment/edit-appointment.component';
-import { shiftTime } from '../../utils/date';
+import { EditAppointmentComponent } from '../edit-appointment/edit-appointment.component';
+import { shiftTime } from '../../../utils/date';
 import { toSignal } from '@angular/core/rxjs-interop';
-import { AppointmentService } from '../services/appointment.service';
+import { AppointmentService } from '../../services/appointment.service';
 import { toObservable } from '@angular/core/rxjs-interop';
 import { switchMap } from 'rxjs';
 import { CalendarAppointmentComponent } from '../calendar-appointment/calendar-appointment.component';
