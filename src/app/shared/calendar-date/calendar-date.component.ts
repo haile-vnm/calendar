@@ -7,11 +7,14 @@ import { toSignal } from '@angular/core/rxjs-interop';
 import { AppointmentService } from '../services/appointment.service';
 import { toObservable } from '@angular/core/rxjs-interop';
 import { switchMap } from 'rxjs';
+import { CalendarAppointmentComponent } from '../calendar-appointment/calendar-appointment.component';
 
 @Component({
   selector: 'app-calendar-date',
   imports: [
     CommonModule,
+
+    CalendarAppointmentComponent,
   ],
   templateUrl: './calendar-date.component.html',
   styleUrl: './calendar-date.component.scss'
@@ -19,6 +22,7 @@ import { switchMap } from 'rxjs';
 export class CalendarDateComponent {
   private dialog = inject(MatDialog);
   private appointmentService = inject(AppointmentService);
+
   date = input.required<Date>();
 
 
@@ -27,8 +31,8 @@ export class CalendarDateComponent {
       .pipe(switchMap(date => this.appointmentService.getDateAppointments(date)))
   );
 
-  @HostListener('click', ['$event.target'])
-  updateAppointment(el: HTMLElement) {
+  @HostListener('click')
+  updateAppointment() {
     const now = new Date();
     now.setDate(this.date().getDate());
     now.setMonth(this.date().getMonth());

@@ -1,7 +1,13 @@
 :host {
-  padding: 1rem;
+  padding: 1rem .25rem;
 
   .header {
     text-align: center;
+  }
+
+  .appointments {
+    display: flex;
+    gap: .125rem;
+    flex-direction: column;
   }
 }
