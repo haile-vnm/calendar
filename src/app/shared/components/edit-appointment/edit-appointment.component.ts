@@ -10,6 +10,8 @@ import { MatButtonModule } from '@angular/material/button';
 import { MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { AppointmentService } from '../../services/appointment.service';
 import { CommonModule } from '@angular/common';
+import { greaterThan } from '../../../validators/greater-datetime';
+import { ReplaySubject } from 'rxjs';
 
 @Component({
   selector: 'app-edit-appointment',
@@ -40,13 +42,18 @@ export class EditAppointmentComponent implements OnInit {
   form!: FormGroup;
 
   ngOnInit(): void {
+    const form$ = new ReplaySubject<FormGroup>(1);
     this.form = this.fb.group({
       title: [this.appointment()?.title || this.data.title || '', Validators.required],
       startDate: [this.appointment()?.start || this.data.start || '', Validators.required],
       endDate: [this.appointment()?.end || this.data.end || '', Validators.required],
       startTime: [this.appointment()?.start || this.data.start || '', Validators.required],
-      endTime: [this.appointment()?.end || this.data.end || '', Validators.required],
+      endTime: this.fb.control(
+        this.appointment()?.end || this.data.end || '',
+        { validators: Validators.required, asyncValidators: greaterThan('startDate', 'startTime', 'endDate', form$) }
+      ),
     });
+    form$.next(this.form);
   }
 
   submitForm() {

@@ -40,3 +40,33 @@ export const isEqualDate = (date: Date, compareDate: Date): boolean => {
     date.getDate() === compareDate.getDate()
   );
 };
+
+export const createDateFrom = (date: Date, time: Date) => {
+  return new Date(
+    date.getFullYear(),
+    date.getMonth(),
+    date.getDate(),
+    time.getHours(),
+    time.getMinutes()
+  )
+}
+
+export function getWeekDates(date: Date): Date[] {
+  const week: Date[] = [];
+  // to avoid modifying original date
+  const inputDate = new Date(date);
+
+  // Calculate the Monday of the current week
+  const dayOfWeek = inputDate.getDay(); // 0 (Sunday) to 6 (Saturday)
+  const mondayOffset = (dayOfWeek + 6) % 7; // Convert Sunday (0) to 6, Monday (1) to 0, etc.
+
+  inputDate.setDate(inputDate.getDate() - mondayOffset); // Move to Monday
+
+  // Collect 7 days from Monday to Sunday
+  for (let i = 0; i < 7; i++) {
+    week.push(new Date(inputDate));
+    inputDate.setDate(inputDate.getDate() + 1);
+  }
+
+  return week;
+}
