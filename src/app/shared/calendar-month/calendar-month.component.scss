@@ -1,0 +1,40 @@
+:host {
+  display: flex;
+  height: 100%;
+  flex-direction: column;
+  border: solid 1px #cecece;
+  border-radius: 1rem;
+
+  .calendar {
+    display: block;
+    height: 100%;
+  }
+
+  .month {
+    display: flex;
+    height: 100%;
+    flex-direction: column;
+  }
+
+  .week {
+    display: flex;
+    flex: 1 1 0%;
+    border-bottom: solid 1px #cecece;
+
+    .date {
+      border-right: solid 1px #cecece;
+      flex: 1 1 0%;
+    }
+  }
+
+  .week-days {
+    display: flex;
+
+    .day {
+      padding-top: 1rem;
+      border-right: solid 1px #cecece;
+      flex: 1 1 0%;
+      text-align: center;
+    }
+  }
+}

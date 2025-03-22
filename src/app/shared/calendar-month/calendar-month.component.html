@@ -1,3 +1,10 @@
-<div *ngFor="let week of weeks()">
-  <app-calendar-date *ngFor="let date of week" [date]="date"></app-calendar-date>
+<div class="week-days">
+  <div *ngFor="let day of weekdays" class="day">{{day}}</div>
+</div>
+<div class="calendar">
+  <div class="month">
+    <div *ngFor="let week of weeks(); first as first" class="week">
+      <app-calendar-date *ngFor="let date of week" [date]="date" class="date"></app-calendar-date>
+    </div>
+  </div>
 </div>

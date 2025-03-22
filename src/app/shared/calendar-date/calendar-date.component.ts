@@ -1,8 +1,11 @@
+import { CommonModule, DatePipe, UpperCasePipe } from '@angular/common';
 import { Component, input } from '@angular/core';
 
 @Component({
   selector: 'app-calendar-date',
-  imports: [],
+  imports: [
+    CommonModule,
+  ],
   templateUrl: './calendar-date.component.html',
   styleUrl: './calendar-date.component.scss'
 })

@@ -18,4 +18,5 @@ export class CalendarMonthComponent {
   private calendarService = inject(CalendarService);
 
   weeks = toSignal(this.calendarService.getCurrentWeeks());
+  weekdays = ['MON', 'TUE', 'WED', 'THU', 'FRI', 'SAT', 'SUN'];
 }
