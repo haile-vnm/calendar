@@ -9,5 +9,12 @@
     display: flex;
     gap: .125rem;
     flex-direction: column;
+    margin-top: .75rem;
+  }
+
+  .today {
+    border-radius: 50%;
+    padding: .5rem;
+    background-color: var(--mat-sys-inverse-primary);
   }
 }

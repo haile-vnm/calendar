@@ -1,8 +1,8 @@
 import { CommonModule } from '@angular/common';
-import { Component, HostListener, inject, input } from '@angular/core';
+import { Component, computed, HostListener, inject, input } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { EditAppointmentComponent } from '../edit-appointment/edit-appointment.component';
-import { shiftTime } from '../../../utils/date';
+import { isEqualDate, shiftTime } from '../../../utils/date';
 import { toSignal } from '@angular/core/rxjs-interop';
 import { AppointmentService } from '../../services/appointment.service';
 import { toObservable } from '@angular/core/rxjs-interop';
@@ -27,6 +27,7 @@ export class CalendarDateComponent {
   private appointmentService = inject(AppointmentService);
 
   date = input.required<Date>();
+  isToday = computed(() => isEqualDate(this.date(), new Date()))
 
 
   appointments = toSignal(
